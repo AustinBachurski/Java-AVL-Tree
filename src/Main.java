@@ -6,6 +6,12 @@ public class Main {
 
         tree.populate();
 
-        System.out.println("Done.");
+
+        System.out.println("**Pre Order**");
+        tree.printNodesByPreOrder();
+        System.out.println("\n**In Order**");
+        tree.printNodesByInOrder();
+        System.out.println("\n**Post Order**");
+        tree.printNodesByPostOrder();
     }
 }

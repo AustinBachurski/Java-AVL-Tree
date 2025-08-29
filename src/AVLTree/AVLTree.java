@@ -12,12 +12,18 @@ public class AVLTree {
         }
     }
 
-    Node root = null;
+    private Node root = null;
+    private int size = 0;
+    private int printCount = 0;
 
     public void populate() {
         for (int i = 1; i < 8; ++i) {
             insert(i);
         }
+    }
+
+    public int size() {
+        return size;
     }
 
     public void insert(int value) {
@@ -29,19 +35,98 @@ public class AVLTree {
     }
 
     public void printNodesByInOrder() {
-
+        printCount = 0;
+        printHeader();
+        printInOrder(root);
+        printFooter();
     }
 
     public void printNodesByPreOrder() {
-
+        printHeader();
+        printPreOrder(root);
+        printFooter();
     }
 
     public void printNodesByPostOrder() {
+        printCount = 0;
+        printHeader();
+        printPostOrder(root);
+        printFooter();
+    }
 
+    private void printHeader() {
+        System.out.println("Tree contains " + size + " elements:");
+        System.out.print('{');
+    }
+
+    private void printFooter() {
+        System.out.println(" }");
+    }
+
+    private void printInOrder(Node node) {
+
+        if (node == null) {
+            return;
+        }
+
+        if (node.leftChild != null) {
+            printInOrder(node.leftChild);
+        }
+
+        System.out.print(" " + node.data);
+        ++printCount;
+
+        if (printCount < size) {
+            System.out.print(",");
+        }
+
+        if (node.rightChild != null) {
+            printInOrder(node.rightChild);
+        }
+    }
+
+    private void printPreOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        System.out.print(" " + node.data);
+
+        if (node.leftChild != null) {
+            System.out.print(",");
+            printPreOrder(node.leftChild);
+        }
+
+        if (node.rightChild != null) {
+            System.out.print(",");
+            printPreOrder(node.rightChild);
+        }
+    }
+
+    private void printPostOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        if (node.leftChild != null) {
+            printPostOrder(node.leftChild);
+        }
+
+        if (node.rightChild != null) {
+            printPostOrder(node.rightChild);
+        }
+
+        System.out.print(" " + node.data);
+        ++printCount;
+
+        if (printCount < size) {
+            System.out.print(",");
+        }
     }
 
     private Node insert(Node node, int value) {
         if (node == null) {
+            ++size;
             return new Node(value);
         }
 
