@@ -60,7 +60,7 @@ public class AVLTree {
     }
 
     private void printFooter() {
-        System.out.println(" }");
+        System.out.println(" }\n");
     }
 
     private void printInOrder(Node node) {
