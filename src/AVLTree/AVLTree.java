@@ -2,14 +2,14 @@ package AVLTree;
 
 public class AVLTree {
     public static class Node {
-        Node leftChild = null;
-        Node rightChild = null;
-        int height = 1;
-        int data;
-
         public Node(int value) {
             data = value;
         }
+
+        private Node leftChild = null;
+        private Node rightChild = null;
+        private int height = 1;
+        private final int data;
     }
 
     private Node root = null;
@@ -22,15 +22,15 @@ public class AVLTree {
         }
     }
 
-    public int size() {
-        return size;
+    public boolean contains(int value) {
+        return contains(root, value);
     }
 
     public void insert(int value) {
         root = insert(root, value);
     }
 
-    public void deleteNode(int value) {
+    public void delete(int value) {
 
     }
 
@@ -52,6 +52,18 @@ public class AVLTree {
         printHeader();
         printPostOrder(root);
         printFooter();
+    }
+
+    private boolean contains(Node node, int value) {
+        if (node == null) {
+            return false;
+        }
+
+        if (node.data == value) {
+            return true;
+        }
+
+        return contains(node.leftChild, value) || contains(node.rightChild, value);
     }
 
     private void printHeader() {

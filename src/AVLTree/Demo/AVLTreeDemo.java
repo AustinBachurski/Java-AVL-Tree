@@ -23,10 +23,10 @@ public class AVLTreeDemo {
                     if (tree == null) {
                         createTree();
                     } else if (confirmDestroy()){
-                        System.out.println("Old tree destroyed.");
                         createTree();
                     } else {
-                        System.out.println("The old tree remains.");
+                        clearScreen();
+                        System.out.println("The old tree remains.\n");
                     }
                     break;
 
@@ -94,7 +94,19 @@ public class AVLTreeDemo {
 
     private void addNode() {
         clearScreen();
+        int value = readNumberFromConsole("Enter the value you wish to add: ");
 
+        if (tree.contains(value))
+        {
+            clearScreen();
+            System.out.println("The tree already contains the value " + value + ".\n");
+            return;
+        }
+
+        tree.insert(value);
+
+        clearScreen();
+        System.out.println("Value " + value + " inserted into the tree.\n");
     }
 
     private boolean confirmDestroy() {
@@ -104,7 +116,19 @@ public class AVLTreeDemo {
 
     private void deleteNode() {
         clearScreen();
+        int value = readNumberFromConsole("Enter the value you wish to remove: ");
 
+        if (!tree.contains(value))
+        {
+            clearScreen();
+            System.out.println("The tree does not contain the value " + value + ".\n");
+            return;
+        }
+
+        tree.delete(value);
+
+        clearScreen();
+        System.out.println("Value " + value + " removed from the tree.\n");
     }
 
     private void printInOrder() {
@@ -128,7 +152,7 @@ public class AVLTreeDemo {
         tree = new AVLTree();
         tree.populate();
 
-        System.out.println("New tree created and populated.");
+        System.out.println("New tree created and populated.\n");
     }
 
     private boolean readBoolFromConsole(String prompt) {
