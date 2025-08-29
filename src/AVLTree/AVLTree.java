@@ -31,7 +31,7 @@ public class AVLTree {
     }
 
     public void delete(int value) {
-
+        root = delete(root, value);
     }
 
     public void printNodesByInOrder() {
@@ -64,6 +64,21 @@ public class AVLTree {
         }
 
         return contains(node.leftChild, value) || contains(node.rightChild, value);
+    }
+
+    private Node delete(Node node, int value) {
+        if (node == null) {
+            return node;
+        }
+
+        if (value < node.data) {
+            node.leftChild = delete(node.leftChild, value);
+        } else if (value > node.data) {
+            node.rightChild = delete(node.rightChild, value);
+        } else if (node.leftChild == null || node.rightChild == null){
+            Node temp = node.leftChild != null ? node.leftChild : node.rightChild;
+            // Working Here
+        }
     }
 
     private void printHeader() {
