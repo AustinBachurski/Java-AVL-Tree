@@ -1,5 +1,11 @@
+import AVLTree.AVLTree;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Do it haz workingz?");
+        AVLTree tree = new AVLTree();
+
+        tree.populate();
+
+        System.out.println("Done.");
     }
 }
