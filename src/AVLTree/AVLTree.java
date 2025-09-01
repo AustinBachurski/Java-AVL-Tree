@@ -71,14 +71,23 @@ public class AVLTree {
     // Recursive method to search for a value in the tree.
     private boolean contains(Node node, int value) {
         if (node == null) {
+            // Bottom of tree reached without finding the value, return false.
             return false;
         }
 
         if (node.data == value) {
+            // Value found, return true.
             return true;
         }
 
-        return contains(node.leftChild, value) || contains(node.rightChild, value);
+        // Compare the value to the current node:
+        // - Recurse left if less than the node value.
+        // - Recurse right if greater than the node value.
+        if (value < node.data) {
+            return contains(node.leftChild, value);
+        } else {
+            return contains(node.rightChild, value);
+        }
     }
 
     // Recursive method to delete a value from the tree.
