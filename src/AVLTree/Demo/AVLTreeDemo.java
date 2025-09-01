@@ -10,6 +10,8 @@ public class AVLTreeDemo {
     // Scanner to read from the console.
     Scanner stdin = new Scanner(System.in);
 
+// PUBLIC METHODS
+
     // Begins the main loop of the demo.
     public void start() {
         System.out.println("Welcome to the interactive demo for my AVL Tree implementation.");
@@ -89,6 +91,8 @@ public class AVLTreeDemo {
             printMenu();
         }
     }
+
+// PRIVATE METHODS
 
     // Request and validate a number from the console and add it to the tree.
     private void addNode() {
