@@ -23,6 +23,10 @@ I'm a bit confused by the instructions following `7. Exit program` in the Assign
 1. Print nodes by PostOrder
 1. Exit program
 
+## Comments
+
+The utterly insane amount of comments are required by the course rubric and are not reflective of my coding style.
+
 ## Demo Screenshots
 
 ![Implementation Demo](screenshots/demo.png)
